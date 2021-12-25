@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import { Landing } from "../components/Landing";
+import { Landing } from "../components/landing";
 import { Welcome } from "../components/welcome";
 import { Venue } from "../components/venue";
 import { Rundown } from "../components/rundown";
