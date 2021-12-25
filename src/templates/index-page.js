@@ -1,149 +1,92 @@
 import React from "react";
+import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
-import { getImage } from "gatsby-plugin-image";
 
-import Layout from "../components/Layout";
-import Features from "../components/Features";
-import BlogRoll from "../components/BlogRoll";
-import FullWidthImage from "../components/FullWidthImage";
+import { Landing } from "../components/Landing";
+import { Welcome } from "../components/welcome";
+import { Venue } from "../components/venue";
+import { Rundown } from "../components/rundown";
+import { Vaccination } from "../components/vaccination";
 
-// eslint-disable-next-line
-export const IndexPageTemplate = ({
-  image,
-  title,
-  heading,
-  subheading,
-  mainpitch,
-  description,
-  intro,
-}) => {
-  const heroImage = getImage(image) || image;
+export default function IndexPageTemplate({
+  data
+}) {
+  const { landing, welcome, venue, rundown, vaccination } = data
 
-  return (
-    <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
-                  <div className="content">
-                    <div className="tile">
-                      <h1 className="title">{mainpitch.title}</h1>
-                    </div>
-                    <div className="tile">
-                      <h3 className="subtitle">{mainpitch.description}</h3>
-                    </div>
-                  </div>
-                  <div className="columns">
-                    <div className="column is-12">
-                      <h3 className="has-text-weight-semibold is-size-2">
-                        {heading}
-                      </h3>
-                      <p>{description}</p>
-                    </div>
-                  </div>
-                  <Features gridItems={intro.blurbs} />
-                  <div className="columns">
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/products">
-                        See all products
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      Latest stories
-                    </h3>
-                    <BlogRoll />
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/blog">
-                        Read more
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
-
-IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
-};
-
-const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
-
-  return (
-    <Layout>
-      <IndexPageTemplate
-        image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
-      />
-    </Layout>
-  );
-};
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
-};
-
-export default IndexPage;
+  return (<div className="w-screen h-screen">
+    <Landing {...landing.frontmatter}></Landing>
+    <Welcome {...welcome.frontmatter}></Welcome>
+    <Venue {...venue.frontmatter}></Venue>
+    <Rundown {...rundown.frontmatter}></Rundown>
+    <Vaccination {...vaccination.frontmatter}></Vaccination>
+  </div>)
+}
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+  query IndexPageQuery {
+    landing:  markdownRemark(frontmatter: { templateKey: { eq: "landing-page" } }){
       frontmatter {
-        title
-        image {
+        wedIcon
+        name 
+        date
+        bg {
           childImageSharp {
-            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
           }
         }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
-        description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                gatsbyImageData(width: 240, quality: 64, layout: CONSTRAINED)
-              }
-            }
-            text
+      }
+    }
+    welcome:  markdownRemark(frontmatter: { templateKey: { eq: "welcome-page" } }){
+      frontmatter {
+        welcomeHeader
+        welcomeText
+        bg {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH,  quality: 100)
           }
-          heading
-          description
+        }
+      }
+    }
+    venue:  markdownRemark(frontmatter: { templateKey: { eq: "venue-page" } }){
+      frontmatter {
+        headerZhHK
+        headerEnGB
+        address
+        venueIcon
+        venue
+        restaurant
+        bg {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH,  quality: 100)
+          }
+        }
+      }
+    }
+    rundown:  markdownRemark(frontmatter: { templateKey: { eq: "rundown-page" } }){
+      frontmatter {
+        headerZhHK
+        headerEnGB
+        rundown {
+          time
+          event
+        }
+        bg {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+          }
+        }
+      }
+    }
+    vaccination:  markdownRemark(frontmatter: { templateKey: { eq: "vaccination-page" } }){
+      frontmatter {
+        vaccinationIcon
+        vaccinationText
+        bg {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+          }
         }
       }
     }
   }
-`;
+`
