@@ -1,3 +1,33 @@
+
+@font-face {
+  font-family: BebasNeue;
+  src: url('../fonts/BebasNeue-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: ImpactLabel;
+  src: url('../fonts/Impact\ Label\ Reversed.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Kozuka;
+  src: url('../fonts/Kozuka-gothic-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Znikomit;
+  src: url('../fonts/ZnikomitNo25.otf') format('truetype');
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  border-top: 10px solid #fff;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

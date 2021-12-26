@@ -25,7 +25,11 @@ export const pageQuery = graphql`
   query IndexPageQuery {
     landing:  markdownRemark(frontmatter: { templateKey: { eq: "landing-page" } }){
       frontmatter {
-        wedIcon
+        wedIcon {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+          }
+        }
         name 
         date
         bg {
@@ -51,8 +55,11 @@ export const pageQuery = graphql`
         headerZhHK
         headerEnGB
         address
-        venueIcon
-        venue
+        venueIcon {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH,  quality: 100)
+          }
+        }
         restaurant
         bg {
           childImageSharp {
@@ -78,7 +85,11 @@ export const pageQuery = graphql`
     }
     vaccination:  markdownRemark(frontmatter: { templateKey: { eq: "vaccination-page" } }){
       frontmatter {
-        vaccinationIcon
+        vaccinationIcon {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+          }
+        }
         vaccinationText
         bg {
           childImageSharp {
