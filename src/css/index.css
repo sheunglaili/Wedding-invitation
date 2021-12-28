@@ -19,6 +19,11 @@
   src: url('../fonts/ZnikomitNo25.otf') format('truetype');
 }
 
+@font-face {
+  font-family: Sung;
+  src: url('../fonts/TWSung.otf') format('opentype');
+}
+
 .arrow-down {
   width: 0; 
   height: 0; 

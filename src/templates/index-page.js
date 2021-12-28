@@ -6,6 +6,7 @@ import { Welcome } from "../components/welcome";
 import { Venue } from "../components/venue";
 import { Rundown } from "../components/rundown";
 import { Vaccination } from "../components/vaccination";
+import ReactPageScroller from "react-page-scroller";
 
 export default function IndexPageTemplate({
   data
@@ -13,11 +14,13 @@ export default function IndexPageTemplate({
   const { landing, welcome, venue, rundown, vaccination } = data
 
   return (<div className="w-screen h-screen">
-    <Landing {...landing.frontmatter}></Landing>
-    <Welcome {...welcome.frontmatter}></Welcome>
-    <Venue {...venue.frontmatter}></Venue>
-    <Rundown {...rundown.frontmatter}></Rundown>
-    <Vaccination {...vaccination.frontmatter}></Vaccination>
+    <ReactPageScroller>
+      <Landing {...landing.frontmatter}></Landing>
+      <Welcome {...welcome.frontmatter}></Welcome>
+      <Venue {...venue.frontmatter}></Venue>
+      <Rundown {...rundown.frontmatter}></Rundown>
+      <Vaccination {...vaccination.frontmatter}></Vaccination>
+    </ReactPageScroller>
   </div>)
 }
 
@@ -27,7 +30,7 @@ export const pageQuery = graphql`
       frontmatter {
         wedIcon {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH,placeholder: TRACED_SVG, quality: 50)
           }
         }
         name 
@@ -57,7 +60,7 @@ export const pageQuery = graphql`
         address
         venueIcon {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH,  quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH,  quality: 50, placeholder: TRACED_SVG)
           }
         }
         restaurant
@@ -87,7 +90,7 @@ export const pageQuery = graphql`
       frontmatter {
         vaccinationIcon {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, quality: 50, placeholder: TRACED_SVG)
           }
         }
         vaccinationText

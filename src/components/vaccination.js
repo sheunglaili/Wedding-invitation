@@ -4,11 +4,14 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from 'gatsby-background-image'
 
-export function Vaccination({
+import { motion } from "framer-motion";
+
+
+export const Vaccination = React.forwardRef(function ({
   vaccinationIcon,
   vaccinationText,
   bg
-}) {
+}, ref) {
   const image = getImage(bg)
   const bgImage = convertToBgImage(image)
 
@@ -21,14 +24,21 @@ export function Vaccination({
       {...bgImage}
       preserveStackingContext
     >
-      <div className="h-screen w-screen flex flex-col items-center justify-start pt-20 space-y-12" >
-        <div id="icon" className="w-1/6">
+      <div ref={ref} className="h-screen w-screen flex flex-col items-center justify-start pt-20 space-y-12 font-twsung" >
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 2,
+            repeatDelay: 1, 
+            repeat: Infinity
+          }}
+          id="icon" className="w-1/6">
           <GatsbyImage image={icon} />
-        </div>
+        </motion.div>
         <div id="text" className="text-xl">
           {vaccinationText}
         </div>
       </div>
     </BackgroundImage>
   )
-}
+})

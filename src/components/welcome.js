@@ -4,15 +4,15 @@ import { getImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from 'gatsby-background-image'
 
-export function Welcome({
+import { motion } from "framer-motion";
+
+export const Welcome = React.forwardRef(function({
   welcomeHeader,
   welcomeText,
   bg
-}) {
+}, ref) {
   const image = getImage(bg)
   const bgImage = convertToBgImage(image)
-
-  console.log(welcomeText)
 
   return (
     <BackgroundImage
@@ -22,16 +22,48 @@ export function Welcome({
       objectPosition="top"
       preserveStackingContext
     >
-      <div className="h-screen w-screen flex flex-col items-center justify-end">
+      <div ref={ref} className="h-screen w-screen flex flex-col items-center justify-end">
         <div id="welcome-block" className="flex flex-col items-center pb-4"> 
-        <div id="header" className="flex-1 text-5xl text-sky-500 py-8 border-b border-sky-500">
+        <motion.div 
+          initial={{
+            opacity: 0
+          }}
+          whileInView={{
+            opacity: 1
+          }}
+          viewport={{
+            amount: 'all'
+          }}
+          transition={{
+            delay: 0.5,
+            duration: 1
+          }}
+          id="header" 
+          className="flex-1 text-5xl text-sky-500 py-8 border-b border-sky-500 font-twsung font-thin">
           {welcomeHeader}
-        </div>
-        <div id="welcome-text" className="whitespace-pre-wrap text-center py-8 text-xl text-sky-500 leading-loose">
+        </motion.div>
+        <motion.div 
+          initial={{
+            opacity: 0,
+            y: '-20%'
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0
+          }}
+          viewport={{
+            amount: 'all'
+          }}
+          transition={{
+            delay: 1.5,
+            duration: 1
+          }}
+         id="welcome-text"
+         className="whitespace-pre-wrap text-center py-8 text-xl text-sky-500 leading-loose font-twsung">
           {welcomeText}
-        </div>
+        </motion.div >
         </div>
       </div>
     </BackgroundImage>
   )
-}
+})

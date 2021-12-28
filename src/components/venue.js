@@ -4,7 +4,10 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from 'gatsby-background-image'
 
-export function Venue({
+import { motion } from "framer-motion";
+
+
+export const Venue = React.forwardRef(function ({
   headerZhHK,
   headerEnGB,
   address,
@@ -12,11 +15,30 @@ export function Venue({
   venue,
   restaurant,
   bg
-}) {
+}, ref) {
   const image = getImage(bg)
   const bgImage = convertToBgImage(image)
 
   const parsedVenueIcon = getImage(venueIcon)
+
+
+  const createTypeWriterVariants = (delay = 0) => {
+    return {
+      hidden: { opacity: 1 },
+      visible: {
+        opacity: 1,
+        transition: {
+          delayChildren: delay,
+          staggerChildren: 0.2
+        }
+      }
+    }
+  }
+
+  const letters = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  }
 
   return (
     <BackgroundImage
@@ -25,28 +47,70 @@ export function Venue({
       {...bgImage}
       preserveStackingContext
     >
-      <div className="h-screen w-screen flex flex-col pt-16 pl-12 items-start justify-start" >
+      <div ref={ref} className="h-screen w-screen flex flex-col pt-16 pl-12 items-start justify-start" >
         <div id="header" >
-          <div className="font-kozuka text-4xl text-white" style={{letterSpacing: '0.4em'}}>
-            {headerZhHK}
+          <div
+            className="text-4xl text-white font-twsung tracking-widest"
+          >
+            {headerZhHK.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
           </div>
-          <div className="font-znikomit text-3xl text-white">
-            {headerEnGB}
+          <div
+            className="font-znikomit text-3xl text-white tracking-widest"
+          >
+            {headerEnGB.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
           </div>
         </div>
         <div id="divider" className="w-1/12 border border-white my-12" />
-        <div id="location" className="flex flex-col w-full">
-          <div className="text-white text-2xl">
-            {address}
-          </div>
-          <div id="venue-icon" className="w-9/12">
+        <div id="location" className="flex flex-col w-full font-twsung">
+          <motion.div
+            variants={createTypeWriterVariants()}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              amount: 'all'
+            }}
+            className="text-white text-2xl">
+            {address.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
+          </motion.div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: '50%'
+            }}
+            whileInView={{
+              opacity: 1,
+              y: "0%"
+            }}
+            viewport={{
+              amount: 'all'
+            }}
+            transition={{
+              delay: 1.8,
+              duration: 1
+            }}
+            id="venue-icon" className="w-9/12">
             <GatsbyImage image={parsedVenueIcon} />
-          </div>
-          <div className="text-white text-2xl">
-            {restaurant}
-          </div>
+          </motion.div>
+          <motion.div
+            variants={createTypeWriterVariants(3)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              amount: 'all'
+            }}
+            className="text-white text-2xl">
+            {restaurant.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
+          </motion.div>
         </div>
       </div>
     </BackgroundImage>
   )
-}
+})

@@ -7,7 +7,8 @@ module.exports = {
       'bebasneue': ['BebasNeue'],
       'impact': ['ImpactLabel'],
       'kozuka': ['Kozuka'],
-      'znikomit': ['Znikomit']
+      'znikomit': ['Znikomit'],
+      'twsung': ['Sung'],
     },
     extend: {},
   },

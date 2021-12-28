@@ -4,14 +4,39 @@ import { getImage } from "gatsby-plugin-image";
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from 'gatsby-background-image'
 
-export function Rundown({
+import { motion } from "framer-motion";
+
+
+export const Rundown = React.forwardRef(function ({
   headerZhHK,
   headerEnGB,
   rundown,
   bg
-}) {
+}, ref) {
   const image = getImage(bg)
   const bgImage = convertToBgImage(image)
+
+  const scheduleVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      tranisition: {
+        staggerChildren: 0.2,
+        staggerDelay: 1
+      }
+    }
+  }
+
+  const eventsVariants = {
+    hidden: {
+      opacity: 0,
+      x: '-50%'
+    },
+    visible: {
+      opacity: 1,
+      x: '0%'
+    }
+  };
 
   return (
     <BackgroundImage
@@ -23,31 +48,45 @@ export function Rundown({
       }}
       preserveStackingContext
     >
-      <div className="h-screen w-screen flex flex-col pt-16 pl-12 items-start justify-start" >
+      <div ref={ref} className="h-screen w-screen flex flex-col pt-16 pl-12 items-start justify-start " >
         <div id="header" >
-          <div className="font-kozuka text-5xl text-black" style={{letterSpacing: '0.4em'}}>
+          <motion.div className="text-5xl text-black font-twsung" style={{ letterSpacing: '0.4em' }}>
             {headerZhHK}
-          </div>
-          <div className="font-znikomit text-3xl text-black">
+          </motion.div>
+          <motion.div className="font-znikomit text-3xl text-black">
             {headerEnGB}
-          </div>
+          </motion.div>
         </div>
         <div id="divider" className="w-1/12 border border-black my-12" />
-        <div id="rundown" className="flex text-black justify-start items-start space-x-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          id="rundown"
+          variants={scheduleVariants}
+          viewport={{
+            amount: 'all'
+          }}
+          className="flex text-black justify-start items-start space-x-6"
+        >
           {rundown.map(({ time, event }) => {
             return (
-              <div className="flex space-y-6 text-3xl" style={{ textOrientation: 'upright', writingMode: 'vertical-lr' }}>
+              <motion.div
+                variants={eventsVariants}
+                key={`${time}-${event}`}
+                className="flex space-y-6 text-3xl font-twsung"
+                style={{ textOrientation: 'upright', writingMode: 'vertical-lr' }}
+              >
                 <div id="time">
                   {time}
                 </div>
                 <div id="event">
                   {event}
                 </div>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </BackgroundImage>
   )
-}
+})
