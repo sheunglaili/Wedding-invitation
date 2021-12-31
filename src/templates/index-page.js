@@ -14,7 +14,9 @@ export default function IndexPageTemplate({
   const { landing, welcome, venue, rundown, vaccination } = data
 
   return (<div className="w-screen h-screen">
-    <ReactPageScroller>
+    <ReactPageScroller
+      containerHeight={'calc(var(--vh, 1vh) * 100)'} // for utilizing postcss vh fix
+    >
       <Landing {...landing.frontmatter}></Landing>
       <Welcome {...welcome.frontmatter}></Welcome>
       <Venue {...venue.frontmatter}></Venue>

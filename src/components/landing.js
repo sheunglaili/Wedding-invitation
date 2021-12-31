@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 import { convertToBgImage } from "gbimage-bridge"
@@ -19,14 +19,13 @@ export const Landing = React.forwardRef(function ({
 
   const animation = useAnimation();
 
-  const sequence = async () => {
+  const sequence = useCallback(async () => {
     await animation.start({ opacity: [0, 1] }, { duration: 1.5, delay: 1 })
-    // await animation.start({ y: [0, 50 ] }, { repeat: Infinity, repeatDelay:  1 })
-  }
+  }, [animation]);
 
   useEffect(() => {
     sequence();
-  }, [])
+  }, [sequence])
 
   return (
     <BackgroundImage
