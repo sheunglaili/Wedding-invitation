@@ -23,7 +23,7 @@ export const Welcome = React.forwardRef(function({
       preserveStackingContext
     >
       <div ref={ref} className="h-screen w-screen flex flex-col items-center justify-end">
-        <div id="welcome-block" className="flex flex-col items-center pb-8 w-full bg-gradient-to-b from-transparent via-white to-white"> 
+        <div id="welcome-block" className="flex flex-col items-center pb-8 w-full bg-gradient-to-b from-transparent to-white"> 
         <motion.div 
           initial={{
             opacity: 0

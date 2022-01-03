@@ -90,7 +90,7 @@ export const Detail = React.forwardRef(function ({
             })}
           </div>
         </div>
-        <div id="divider-1" className="w-1/12 border border-white my-12" />
+        <div id="divider-1" className="w-1/12 border border-white my-6" />
         <div id="location" className="flex flex-col w-full font-twsung">
           <motion.div
             variants={createTypeWriterVariants()}
@@ -136,7 +136,7 @@ export const Detail = React.forwardRef(function ({
             })}
           </motion.div>
         </div>
-        <div id="divider-2" className="w-1/12 border border-white my-12" />
+        <div id="divider-2" className="w-1/12 border border-white my-6" />
         <div id="runtime" className="flex flex-col w-full font-twsung">
           <motion.div
             initial="hidden"
