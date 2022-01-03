@@ -16,12 +16,27 @@
 
 @font-face {
   font-family: Znikomit;
-  src: url('../fonts/ZnikomitNo25.otf') format('truetype');
+  src: url('../fonts/ZnikomitNo25.otf') format('opentype');
+}
+
+@font-face {
+  font-family: BigCaslon;
+  src: url('../fonts/BigCaslon.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Wedding;
+  src: url('../fonts/our-wedding.ttf') format('truetype');
 }
 
 @font-face {
   font-family: Sung;
   src: url('../fonts/TWSung.otf') format('opentype');
+}
+
+@font-face {
+  font-family: NotoSerifLight;
+  src: url('../fonts/NotoSerifTC-Light.otf') format('opentype');
 }
 
 .arrow-down {

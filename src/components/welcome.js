@@ -23,7 +23,7 @@ export const Welcome = React.forwardRef(function({
       preserveStackingContext
     >
       <div ref={ref} className="h-screen w-screen flex flex-col items-center justify-end">
-        <div id="welcome-block" className="flex flex-col items-center pb-4"> 
+        <div id="welcome-block" className="flex flex-col items-center pb-8 w-full bg-gradient-to-b from-transparent via-white to-white"> 
         <motion.div 
           initial={{
             opacity: 0
@@ -39,9 +39,10 @@ export const Welcome = React.forwardRef(function({
             duration: 1
           }}
           id="header" 
-          className="flex-1 text-5xl text-sky-500 py-8 border-b border-sky-500 font-twsung font-thin">
+          className="flex-1 text-7xl text-sky-500 py-8 font-wedding text-wedding">
           {welcomeHeader}
         </motion.div>
+        <div id="welcome-divider" className="w-1/12 border-b border-sky-500" />
         <motion.div 
           initial={{
             opacity: 0,
@@ -59,7 +60,7 @@ export const Welcome = React.forwardRef(function({
             duration: 1
           }}
          id="welcome-text"
-         className="whitespace-pre-wrap text-center py-8 text-xl text-sky-500 leading-loose font-twsung">
+         className="whitespace-pre-wrap text-center py-4 text-xl text-wedding leading-loose font-notoseriflight font-bold">
           {welcomeText}
         </motion.div >
         </div>

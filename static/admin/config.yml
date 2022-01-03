@@ -60,18 +60,6 @@ collections:
           - { label: "Venue", name: "venue", widget: "string" }
           - { label: "Restaurant", name: "restaurant", widget: "string" }
           - { label: "Background image", name: "bg", widget: "image" }
-      - file: "src/pages/rundown-page.md"
-        label: "Rundown Page"
-        name: "rundown-page"
-        fields: 
-          - {
-              label: "Template Key",
-              name: "templateKey",
-              widget: "hidden",
-              default: "rundown-page",
-            }
-          - { label: "Header-zh_hk", name: "headerZhHK", widget: "string" }
-          - { label: "Header-zh_en", name: "headerEnGB", widget: "string" }
           - label: Rundown
             name: rundown
             widget: list
@@ -89,4 +77,5 @@ collections:
               default: "vaccination-page",
             }
           - { label: "Vaccination icon", name: "vaccinationIcon", widget: "image" }
-          - { label: "Vaccination text", name: "vaccinationText", widget: "string" }
+          - { label: "Vaccination text zh_hk", name: "vaccinationTextZhHK", widget: "string" }
+          - { label: "Vaccination text en_gb", name: "vaccinationTextEnGB", widget: "string" }

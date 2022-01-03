@@ -43,7 +43,7 @@ export const Landing = React.forwardRef(function ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="font-znikomit text-white text-3xl mt-6"
+            className="font-bigcaslon text-white text-3xl mt-6"
           >{name}</motion.div>
           <motion.div
             initial={{ opacity: 0 }}

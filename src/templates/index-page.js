@@ -3,15 +3,14 @@ import { graphql } from "gatsby";
 
 import { Landing } from "../components/landing";
 import { Welcome } from "../components/welcome";
-import { Venue } from "../components/venue";
-import { Rundown } from "../components/rundown";
+import { Detail } from "../components/detail";
 import { Vaccination } from "../components/vaccination";
 import ReactPageScroller from "react-page-scroller";
 
 export default function IndexPageTemplate({
   data
 }) {
-  const { landing, welcome, venue, rundown, vaccination } = data
+  const { landing, welcome, detail, vaccination } = data
 
   return (<div className="w-screen h-screen">
     <ReactPageScroller
@@ -19,8 +18,7 @@ export default function IndexPageTemplate({
     >
       <Landing {...landing.frontmatter}></Landing>
       <Welcome {...welcome.frontmatter}></Welcome>
-      <Venue {...venue.frontmatter}></Venue>
-      <Rundown {...rundown.frontmatter}></Rundown>
+      <Detail {...detail.frontmatter}></Detail>
       <Vaccination {...vaccination.frontmatter}></Vaccination>
     </ReactPageScroller>
   </div>)
@@ -55,7 +53,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    venue:  markdownRemark(frontmatter: { templateKey: { eq: "venue-page" } }){
+    detail:  markdownRemark(frontmatter: { templateKey: { eq: "detail-page" } }){
       frontmatter {
         headerZhHK
         headerEnGB
@@ -66,24 +64,13 @@ export const pageQuery = graphql`
           }
         }
         restaurant
-        bg {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH,  quality: 100)
-          }
-        }
-      }
-    }
-    rundown:  markdownRemark(frontmatter: { templateKey: { eq: "rundown-page" } }){
-      frontmatter {
-        headerZhHK
-        headerEnGB
         rundown {
           time
           event
         }
         bg {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH,  quality: 100)
           }
         }
       }
@@ -95,7 +82,8 @@ export const pageQuery = graphql`
             gatsbyImageData(layout: FULL_WIDTH, quality: 50, placeholder: TRACED_SVG)
           }
         }
-        vaccinationText
+        vaccinationTextZhHK
+        vaccinationTextEnGB
         bg {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, quality: 100)
