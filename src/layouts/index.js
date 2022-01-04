@@ -63,7 +63,6 @@ export default function ({ children }) {
   }, [touchStart, touchEnd, moveUp, moveDown])
 
   useEffect(() => {
-    console.log(pageIndex)
     if (pageIndex !== previousIndex) {
       navigate(pagesPath[pageIndex])
     }
