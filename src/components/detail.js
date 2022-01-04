@@ -73,17 +73,17 @@ export const Detail = React.forwardRef(function ({
       {...bgImage}
       preserveStackingContext
     >
-      <div ref={ref} className="h-screen w-screen flex flex-col pt-16 pl-12 items-start justify-start" >
+      <div ref={ref} className="h-screen w-screen flex flex-col px-12 py-8 items-start justify-start" >
         <div id="header" >
           <div
-            className="text-4xl text-white font-twsung tracking-widest"
+            className="xxxs:text-3xl xxs:text-4xl xs:text-4-1/2xl text-white font-twsung tracking-widest"
           >
             {headerZhHK.split("").map((letter, index) => {
               return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
             })}
           </div>
           <div
-            className="font-znikomit text-3xl text-white tracking-widest"
+            className="font-znikomit xxxs:text-xl xxs:text-2xl xs:text-3xl text-white tracking-widest"
           >
             {headerEnGB.split("").map((letter, index) => {
               return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
@@ -153,7 +153,7 @@ export const Detail = React.forwardRef(function ({
                 <motion.div
                   variants={eventsVariants}
                   key={`${time}-${event}`}
-                  className="flex space-y-6 text-3xl font-twsung text-white"
+                  className="flex justify-between h-52 xxxs:text-2xl xxs:text-3xl font-twsung text-white"
                   style={{ textOrientation: 'upright', writingMode: 'vertical-lr' }}
                 >
                   <div id="time">
