@@ -10,6 +10,7 @@
     "gatsby": "^4.0.0",
     "gatsby-background-image": "^1.6.0",
     "gatsby-plugin-image": "^2.0.0",
+    "gatsby-plugin-layout": "^3.4.0",
     "gatsby-plugin-netlify": "^3.14.0",
     "gatsby-plugin-netlify-cms": "^6.0.0",
     "gatsby-plugin-postcss": "^5.4.0",

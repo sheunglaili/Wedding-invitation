@@ -14,6 +14,27 @@ exports.createPages = ({ actions }) => {
     // additional data can be passed via context
     context: {},
   })
+
+  createPage({
+    path: '/welcome',
+    component: path.resolve(
+      `src/templates/welcome-page.js`
+    )
+  })
+
+  createPage({
+    path: '/detail',
+    component: path.resolve(
+      `src/templates/detail-page.js`
+    )
+  })
+
+  createPage({
+    path: '/vaccination',
+    component: path.resolve(
+      `src/templates/vaccination-page.js`
+    )
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
