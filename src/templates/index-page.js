@@ -54,8 +54,8 @@ export default function IndexPageTemplate({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5, delay: 1 }}
-              className="font-impact text-xl text-white"
-              style={{ letterSpacing: '0.5em' }}>{date}</motion.div>
+              className="font-impact text-lg text-white"
+              style={{ letterSpacing: '0.5em', marginRight: '-0.5em' }}>{date}</motion.div>
           </div>
           <motion.div
             animate={{

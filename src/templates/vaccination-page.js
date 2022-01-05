@@ -24,31 +24,31 @@ export default function VaccinationPageTemplate({
   const icon = getImage(vaccinationIcon)
 
   return (
-      <BackgroundImage
-        Tag="section"
-        // Spread bgImage into BackgroundImage:
-        {...bgImage}
-        preserveStackingContext
-      >
-        <div className="h-screen w-screen flex flex-col items-center justify-start pt-20 space-y-12 font-twsung text-vaccination" >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              duration: 2,
-              repeatDelay: 1,
-              repeat: Infinity
-            }}
-            id="icon" className="w-1/12">
-            <GatsbyImage imgStyle={{ filter: 'invert(31%) sepia(68%) saturate(1650%) hue-rotate(161deg) brightness(91%) contrast(98%)' }} image={icon} />
-          </motion.div>
-          <div id="text" className="text-l">
-            {vaccinationTextEnGB}
-          </div>
-          <div id="text" className="text-xl font-thin">
-            {vaccinationTextZhHK}
-          </div>
+    <BackgroundImage
+      Tag="section"
+      // Spread bgImage into BackgroundImage:
+      {...bgImage}
+      preserveStackingContext
+    >
+      <div className="h-screen w-screen flex flex-col items-center justify-start pt-20 space-y-12 font-twsung text-vaccination" >
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 2,
+            repeatDelay: 1,
+            repeat: Infinity
+          }}
+          id="icon" className="w-1/12">
+          <GatsbyImage imgStyle={{ filter: 'invert(31%) sepia(68%) saturate(1650%) hue-rotate(161deg) brightness(91%) contrast(98%)' }} image={icon} />
+        </motion.div>
+        <div id="text" className="text-xl font-thin">
+          {vaccinationTextZhHK}
         </div>
-      </BackgroundImage>
+        <div id="text" className="text-l">
+          {vaccinationTextEnGB}
+        </div>
+      </div>
+    </BackgroundImage>
   )
 }
 
