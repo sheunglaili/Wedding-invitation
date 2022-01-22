@@ -14,7 +14,6 @@ export default function VaccinationPageTemplate({
   const {
     vaccinationIcon,
     vaccinationTextZhHK,
-    vaccinationTextEnGB,
     bg
   } = data.markdownRemark.frontmatter
 
@@ -41,11 +40,8 @@ export default function VaccinationPageTemplate({
           id="icon" className="w-1/12">
           <GatsbyImage imgStyle={{ filter: 'invert(31%) sepia(68%) saturate(1650%) hue-rotate(161deg) brightness(91%) contrast(98%)' }} image={icon} />
         </motion.div>
-        <div id="text" className="text-xl font-thin">
+        <div id="text" className="text-md text-center font-thin px-8">
           {vaccinationTextZhHK}
-        </div>
-        <div id="text" className="text-l">
-          {vaccinationTextEnGB}
         </div>
       </div>
     </BackgroundImage>
@@ -62,7 +58,6 @@ export const pageQuery = graphql`
           }
         }
         vaccinationTextZhHK
-        vaccinationTextEnGB
         bg {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, quality: 100)

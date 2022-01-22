@@ -151,15 +151,14 @@ export default function DetailPageTemplate({
               viewport={{
                 amount: 'all'
               }}
-              className="flex text-black justify-start items-start space-x-6"
+              className="flex flex-col text-black justify-start items-start space-y-12"
             >
               {rundown.map(({ time, event }) => {
                 return (
                   <motion.div
                     variants={eventsVariants}
                     key={`${time}-${event}`}
-                    className="flex justify-between h-52 xxxs:text-2xl xxs:text-3xl font-twsung text-white"
-                    style={{ textOrientation: 'upright', writingMode: 'vertical-lr' }}
+                    className="flex justify-between w-full xxxs:text-2xl xxs:text-3xl font-twsung text-white"
                   >
                     <div id="time">
                       {time}
