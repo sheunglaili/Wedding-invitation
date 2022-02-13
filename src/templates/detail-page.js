@@ -125,7 +125,7 @@ export default function DetailPageTemplate({
                 delay: 0.45,
                 duration: 0.5
               }}
-              id="venue-icon" className="w-9/12">
+              id="venue-icon" className="w-full">
               <GatsbyImage image={parsedVenueIcon} />
             </motion.div>
             <motion.div
@@ -151,7 +151,7 @@ export default function DetailPageTemplate({
               viewport={{
                 amount: 'all'
               }}
-              className="flex flex-col text-black justify-start items-start space-y-12"
+              className="flex flex-col text-black justify-start items-start space-y-6"
             >
               {rundown.map(({ time, event }) => {
                 return (
