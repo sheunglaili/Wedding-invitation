@@ -14,9 +14,10 @@ export default function DetailPageTemplate({
   const {
     headerZhHK,
     headerEnGB,
+    dateZhHK,
+    dateEnGB,
     address,
     venueIcon,
-    venue,
     rundown,
     restaurant,
     bg
@@ -72,107 +73,113 @@ export default function DetailPageTemplate({
   };
 
   return (
-      <BackgroundImage
-        Tag="section"
-        // Spread bgImage into BackgroundImage:
-        {...bgImage}
-        preserveStackingContext
-      >
-        <div className="h-screen w-screen flex flex-col px-12 py-8 items-start justify-start" >
-          <div id="header" >
-            <div
-              className="xxxs:text-3xl xxs:text-4xl xs:text-4-1/2xl text-white font-twsung tracking-widest"
-            >
-              {headerZhHK.split("").map((letter, index) => {
-                return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
-              })}
-            </div>
-            <div
-              className="font-znikomit xxxs:text-xl xxs:text-2xl xs:text-3xl text-white tracking-widest"
-            >
-              {headerEnGB.split("").map((letter, index) => {
-                return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
-              })}
-            </div>
+    <BackgroundImage
+      Tag="section"
+      // Spread bgImage into BackgroundImage:
+      {...bgImage}
+      preserveStackingContext
+    >
+      <div className="h-screen w-screen flex flex-col px-12 py-8 items-start justify-start" >
+        <div id="header" >
+          <div
+            className="xxxs:text-3xl xxs:text-4xl xs:text-4-1/2xl text-white font-twsung tracking-widest"
+          >
+            {headerZhHK.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
           </div>
-          <div id="divider-1" className="w-1/12 border border-white my-6" />
-          <div id="location" className="flex flex-col w-full font-twsung">
-            <motion.div
-              variants={createTypeWriterVariants()}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                amount: 'all'
-              }}
-              className="text-white text-2xl">
-              {address.split("").map((letter, index) => {
-                return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
-              })}
-            </motion.div>
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: '50%'
-              }}
-              whileInView={{
-                opacity: 1,
-                y: "0%"
-              }}
-              viewport={{
-                amount: 'all'
-              }}
-              transition={{
-                delay: 0.45,
-                duration: 0.5
-              }}
-              id="venue-icon" className="w-full">
-              <GatsbyImage image={parsedVenueIcon} />
-            </motion.div>
-            <motion.div
-              variants={createTypeWriterVariants(0.68)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                amount: 'all'
-              }}
-              className="text-white text-2xl">
-              {restaurant.split("").map((letter, index) => {
-                return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
-              })}
-            </motion.div>
-          </div>
-          <div id="divider-2" className="w-1/12 border border-white my-6" />
-          <div id="runtime" className="flex flex-col w-full font-twsung">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              id="rundown"
-              variants={scheduleVariants}
-              viewport={{
-                amount: 'all'
-              }}
-              className="flex flex-col text-black justify-start items-start space-y-6"
-            >
-              {rundown.map(({ time, event }) => {
-                return (
-                  <motion.div
-                    variants={eventsVariants}
-                    key={`${time}-${event}`}
-                    className="flex justify-between w-full xxxs:text-2xl xxs:text-3xl font-twsung text-white"
-                  >
-                    <div id="time">
-                      {time}
-                    </div>
-                    <div id="event">
-                      {event}
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div>
+          <div
+            className="font-znikomit xxxs:text-xl xxs:text-2xl xs:text-3xl text-white tracking-widest"
+          >
+            {headerEnGB.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
           </div>
         </div>
-      </BackgroundImage>
+        <div
+          className="flex py-6 xxxs:text-lg xxs:text-2xl sm:text-3xl text-white items-center justify-around w-full"
+        >
+          <div className="font-znikomit">{dateEnGB}</div>
+          <div className="font-twsung">{dateZhHK}</div>
+        </div>
+        <div id="divider-1" className="w-1/12 border border-white my-6" />
+        <div id="location" className="flex flex-col w-full font-twsung">
+          <motion.div
+            variants={createTypeWriterVariants()}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              amount: 'all'
+            }}
+            className="text-white text-2xl">
+            {address.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
+          </motion.div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: '50%'
+            }}
+            whileInView={{
+              opacity: 1,
+              y: "0%"
+            }}
+            viewport={{
+              amount: 'all'
+            }}
+            transition={{
+              delay: 0.45,
+              duration: 0.5
+            }}
+            id="venue-icon" className="w-full">
+            <GatsbyImage image={parsedVenueIcon} />
+          </motion.div>
+          <motion.div
+            variants={createTypeWriterVariants(0.68)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              amount: 'all'
+            }}
+            className="text-white text-2xl">
+            {restaurant.split("").map((letter, index) => {
+              return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
+            })}
+          </motion.div>
+        </div>
+        <div id="divider-2" className="w-1/12 border border-white my-6" />
+        <div id="runtime" className="flex flex-col w-full font-twsung">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            id="rundown"
+            variants={scheduleVariants}
+            viewport={{
+              amount: 'all'
+            }}
+            className="flex flex-col text-black justify-start items-start space-y-6"
+          >
+            {rundown.map(({ time, event }) => {
+              return (
+                <motion.div
+                  variants={eventsVariants}
+                  key={`${time}-${event}`}
+                  className="flex justify-between w-full xxxs:text-2xl xxs:text-3xl font-twsung text-white"
+                >
+                  <div id="time">
+                    {time}
+                  </div>
+                  <div id="event">
+                    {event}
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </div>
+      </div>
+    </BackgroundImage>
   )
 }
 
@@ -182,6 +189,8 @@ export const pageQuery = graphql`
       frontmatter {
         headerZhHK
         headerEnGB
+        dateZhHK
+        dateEnGB
         address
         venueIcon {
           childImageSharp {
