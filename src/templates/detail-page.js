@@ -89,7 +89,7 @@ export default function DetailPageTemplate({
             })}
           </div>
           <div
-            className="font-znikomit xxxs:text-xl xxs:text-2xl xs:text-3xl text-white tracking-widest"
+            className="font-bigcaslon xxxs:text-xl xxs:text-2xl xs:text-3xl text-white tracking-widest"
           >
             {headerEnGB.split("").map((letter, index) => {
               return (<motion.span key={`${letter}-${index}`} variants={letters}>{letter}</motion.span>)
@@ -99,7 +99,7 @@ export default function DetailPageTemplate({
         <div
           className="flex py-6 xxxs:text-lg xxs:text-2xl sm:text-3xl text-white items-center justify-around w-full"
         >
-          <div className="font-znikomit">{dateEnGB}</div>
+          <div className="font-bigcaslon">{dateEnGB}</div>
           <div className="font-twsung">{dateZhHK}</div>
         </div>
         <div id="divider-1" className="w-1/12 border border-white my-6" />
